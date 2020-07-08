@@ -37,7 +37,7 @@ abstract public class BasePage {
         element.sendKeys(message);
     }
 
-    public void hoverElement(WebElement element){
+    public void hoverElement(WebElement element){//faltan comentarios para interpretacion
         this.waitForElementToAppear(element);
         actions.moveToElement(element).perform();
     }
