@@ -33,6 +33,11 @@ public class HomePage extends BasePage{
         Assert.assertEquals(is_active,"active");
     }
 
+    /*public void clickGameSelected(){
+        this.click(GameSelected);
+        String is_active = GameSelected.getAttribute("href");
+        Assert.assertEquals(is_active,"active");
+    }*/
 
 }
 
