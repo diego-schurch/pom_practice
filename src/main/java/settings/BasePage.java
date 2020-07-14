@@ -1,10 +1,13 @@
 package settings;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
 
 abstract public class BasePage {
 
@@ -41,6 +44,32 @@ abstract public class BasePage {
         this.waitForElementToAppear(element);
         actions.moveToElement(element).perform();
     }
+
+    //A list with the expected conditions that we can use for explicit waits
+    //https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/ExpectedConditions.html
+
+    public boolean isTextPresentOnElement(WebElement element, String text){
+        this.waitForElementToAppear(element);
+        return wait.until(ExpectedConditions.textToBePresentInElement(element, text));
+    }
+
+    public void waitForElementsToAppear(List<WebElement> elements){
+        wait.until(ExpectedConditions.visibilityOfAllElements(elements));
+    }
+
+    public boolean elementAttributeIs(WebElement element, String attribute, String value){
+        this.waitForElementToAppear(element);
+        return wait.until(ExpectedConditions.attributeContains(element, attribute, value));
+    }
+
+    //HomeWork
+    /*
+    * Create a function that accepts like a parameter retry value and a WebElement
+    * This function will retry to click the WebElement the integer assigned to value.
+    *
+    * Example -> retryClick(fancyButtonElement, 3)
+    *
+    * */
 
 }
 
