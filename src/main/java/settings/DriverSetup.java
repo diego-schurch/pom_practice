@@ -1,12 +1,10 @@
 package settings;
 
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.concurrent.TimeUnit;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.URL;
 import java.net.MalformedURLException;
@@ -25,9 +23,7 @@ public class DriverSetup {
             if (headless) {
                 options.addArguments("--headless");
             }
-
             if (remoteServer) {
-                options.setCapability("platform", "Linux");
                 driver = new RemoteWebDriver(new URL(NODEURL), options);
             } else {
                 driver = new ChromeDriver(options);
