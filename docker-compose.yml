@@ -1,0 +1,32 @@
+# Usage:
+#   docker-compose -f docker-compose-zalenium.yml up --build
+#   In new terminal start test locally example: ./bin/codecept run Config -g smoke --env zaleniumlocal -v 
+#   Live test availble at http://localhost:4444/grid/admin/live you can view videos after test finishes at http://localhost:4444/dashboard/#
+#   docker-compose -f docker-compose-zalenium.yml run automation ./bin/codecept run Config ViewConfig/ViewConfigVersionCept.php --env zaleniumlocal -vvv
+version: '2.1'
+
+services:
+  #--------------#
+  zalenium:
+    image: "dosel/zalenium:3.141.59z"
+    container_name: zalenium
+    hostname: zalenium
+    tty: true
+    volumes:
+      - /tmp/videos:/home/seluser/videos
+      - /var/run/docker.sock:/var/run/docker.sock
+    #     - /usr/bin/docker:/usr/bin/docker
+    ports:
+      - 4444:4444
+    command: >
+      start --desiredContainers 1
+            --maxDockerSeleniumContainers 8
+            --seleniumImageName elgalu/selenium
+            --screenWidth 1200 --screenHeight 600
+            --timeZone "America/Los_Angeles"
+            --videoRecordingEnabled true
+            --sauceLabsEnabled false
+            --testingBotEnabled false
+            --cbtEnabled false
+            --lambdaTestEnabled false
+            --startTunnel true

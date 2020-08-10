@@ -18,13 +18,13 @@ public class HomePageTests extends BaseTest {
         navBar = new NavBar(this.driver);
     }
 
-    @Test
+    @Test(priority = 0)
     public void openAllNavBarTabs(){
         navBar.openYourStoreTab();
         navBar.openGamesTab();
     }
 
-    @Test
+    @Test(priority = 1)
     public void testSuggestedGames(){
         String game_name = "Portal";
         navBar.writeGameIntoSearchInput(game_name);

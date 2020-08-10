@@ -26,6 +26,13 @@ public class NavBar extends BasePage {
     @FindBy(css = "#search_suggestion_contents > a > .match_name")
     private List<WebElement> suggestedGames;
 
+    /*
+    list<WebElement> a;
+    for element in locator<ELEMENT>":
+        list.append(element);
+    locator = "locator<ELEMENT>"*/
+    //[developer1, developer2, developer3]
+
     public NavBar(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver, this);
