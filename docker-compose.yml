@@ -8,16 +8,13 @@ services:
   zalenium:
     image: "dosel/zalenium:3.141.59z"
     container_name: zalenium
-    hostname: zalenium
-    tty: true
     volumes:
       - /tmp/videos:/home/seluser/videos
       - /var/run/docker.sock:/var/run/docker.sock
-    #     - /usr/bin/docker:/usr/bin/docker
     ports:
       - 4444:4444
     command: >
-      start --desiredContainers 1
+      start --desiredContainers 2
             --maxDockerSeleniumContainers 8
             --seleniumImageName elgalu/selenium
             --screenWidth 1200 --screenHeight 600

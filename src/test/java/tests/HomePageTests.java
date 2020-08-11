@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeTest;
 
+
 import settings.BaseTest;
 import components.NavBar;
 
@@ -19,9 +20,10 @@ public class HomePageTests extends BaseTest {
     }
 
     @Test(priority = 0)
-    public void openAllNavBarTabs(){
+    public void openAllNavBarTabs() throws InterruptedException {
         navBar.openYourStoreTab();
         navBar.openGamesTab();
+        Thread.sleep(15000);
     }
 
     @Test(priority = 1)
